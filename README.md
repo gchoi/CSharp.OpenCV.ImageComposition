@@ -20,6 +20,6 @@ Just build and run it in Visual Studio.
 <br/><br/>
 <img src="./web/overlay.png"></img>
 <br/><br/>
-* Overlay Image
+* Result(Blended) Image
 <br/><br/>
-<img src="./web/result.png"></img>
+<img src="./web/result.PNG"></img>
