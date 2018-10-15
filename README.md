@@ -1,4 +1,4 @@
-# C#-OpenCV Image Composition
+# C#-OpenCV Image Composition (Alpha Blending)
 
 This code is about how to do alpha blending of two images - underlying and overlay images - to compose them.
 
