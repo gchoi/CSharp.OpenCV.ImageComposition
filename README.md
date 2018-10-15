@@ -12,5 +12,14 @@ This code is about how to do alpha blending of two images - underlying and overl
 Just build and run it in Visual Studio.
 
 ## Example
-<img src="./underlying.png"></img>
-<img src="./overlay.png"></img>
+* Underlying Image
+<br/><br/>
+<img src="./web/underlying.png"></img>
+<br/><br/>
+* Overlay Image
+<br/><br/>
+<img src="./web/overlay.png"></img>
+<br/><br/>
+* Overlay Image
+<br/><br/>
+<img src="./web/result.png"></img>
