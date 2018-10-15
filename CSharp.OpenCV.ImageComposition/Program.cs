@@ -14,6 +14,7 @@ namespace CSharp.OpenCV.ImageComposition
     {
         public static string UNDERLYING_IMG_PATH = @"..\..\resource\underlying.png";
         public static string OVERLAY_IMG_PATH = @"..\..\resource\overlay.png";
+        public static string RESULT_IMG_PATH = @"..\..\result\result.png";
     }
 
     /// <summary>
@@ -30,8 +31,7 @@ namespace CSharp.OpenCV.ImageComposition
         private static Mat AlphaBlending(Mat underlying_image, Mat overlay_image)
         {
 
-            //Mat result_image = new Mat(new Size(underlying_image.Width, underlying_image.Height), MatType.CV_8UC4, Scalar.All(255));
-            Mat result_image = overlay_image.Clone();
+            Mat result_image = new Mat(new Size(underlying_image.Width, underlying_image.Height), MatType.CV_8UC4, Scalar.All(255));
 
             int imageWidth = underlying_image.Width;
             int imageHeight = underlying_image.Height;
@@ -84,6 +84,9 @@ namespace CSharp.OpenCV.ImageComposition
             Mat overlay_image = Cv2.ImRead(Globals.OVERLAY_IMG_PATH, ImreadModes.Unchanged);
 
             Mat result_image = AlphaBlending(underlying_image, overlay_image);
+
+            // save the result image
+            Cv2.ImWrite(Globals.RESULT_IMG_PATH, result_image);
 
             // display image in a window
             using (var window = new Window("window", image: result_image, flags: WindowMode.AutoSize))
