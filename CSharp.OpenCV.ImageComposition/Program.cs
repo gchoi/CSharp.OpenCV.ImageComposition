@@ -16,6 +16,9 @@ namespace CSharp.OpenCV.ImageComposition
         public static string OVERLAY_IMG_PATH = @"..\..\resource\overlay.png";
     }
 
+    /// <summary>
+    /// class Program
+    /// </summary>
     class Program
     {
         /// <summary>
@@ -27,12 +30,24 @@ namespace CSharp.OpenCV.ImageComposition
         private static Mat AlphaBlending(Mat underlying_image, Mat overlay_image)
         {
 
-            Mat result_image = underlying_image.Clone();
+            Mat result_image = new Mat(new Size(underlying_image.Width, underlying_image.Height), MatType.CV_8UC4, Scalar.All(255));
 
             int imageWidth = underlying_image.Width;
             int imageHeight = underlying_image.Height;
             int i, j;
 
+            // if the image size of underlying image is different from that of overlay image, just return the underlying image
+            if ((underlying_image.Width != overlay_image.Width)
+                || (underlying_image.Height != overlay_image.Height))
+            {
+                Console.WriteLine("ERROR : The sizes of two images must be the same.");
+                result_image = underlying_image.Clone();
+
+                return result_image;
+            }
+
+
+            // pixel-wise alpha blending
             for (i = 0; i < imageWidth; i++)
             {
                 for (j = 0; j < imageHeight; j++)
