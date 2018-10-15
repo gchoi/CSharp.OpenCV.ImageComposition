@@ -30,7 +30,8 @@ namespace CSharp.OpenCV.ImageComposition
         private static Mat AlphaBlending(Mat underlying_image, Mat overlay_image)
         {
 
-            Mat result_image = new Mat(new Size(underlying_image.Width, underlying_image.Height), MatType.CV_8UC4, Scalar.All(255));
+            //Mat result_image = new Mat(new Size(underlying_image.Width, underlying_image.Height), MatType.CV_8UC4, Scalar.All(255));
+            Mat result_image = overlay_image.Clone();
 
             int imageWidth = underlying_image.Width;
             int imageHeight = underlying_image.Height;
@@ -56,7 +57,7 @@ namespace CSharp.OpenCV.ImageComposition
                     var overlay_color = overlay_image.Get<Vec4b>(j, i);
                     var result_color = new Vec4b();
 
-                    int alpha = (int)(overlay_color.Item3 / 255);
+                    double alpha = (double)(overlay_color.Item3 / 255.0);
 
                     // calculate alpha blending
                     result_color.Item0 = (byte)(overlay_color.Item0 * alpha + underlying_color.Item0 * (1 - alpha));
